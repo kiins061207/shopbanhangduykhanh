@@ -1,0 +1,1137 @@
+/* ===== TRANG ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #f2f2f2;
+}
+
+#container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+/* ===== ẢNH NỀN ===== */
+/* ===== ẢNH NỀN BANNER ===== */
+header img {
+    width: 100%;
+    height: 250px;
+    object-fit: fill; /* Thay đổi từ cover sang fill để co dãn vừa vặn thấy toàn bộ ảnh và logo bên trái */
+    display: block;
+}
+
+/* ===== MENU NGANG ===== */
+.menu {
+    position: relative;          /* để giỏ hàng bám ngay dưới menu */
+    background-color: #d70018;
+    padding: 0 15px;
+}
+
+/* Xóa float để menu cao đủ chứa nhóm công tắc + giỏ hàng */
+.menu::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.menu > a {
+    display: inline-block;
+    line-height: 40px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 6px 25px 6px 0;      /* trên | phải | dưới | trái */
+}
+
+.menu > a:hover {
+    text-decoration: underline;
+}
+
+/* Icon giỏ hàng: đẩy hết sang cuối bên phải */
+#top-right {
+    float: right;
+}
+
+#btn-gio-hang {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 6px 0;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#btn-gio-hang img {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+#btn-gio-hang:focus-visible,
+#dong-gio-hang:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ===== KHUNG CHỨA DANH MỤC + SẢN PHẨM ===== */
+#than {
+    padding: 15px;
+}
+
+#than::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.category-menu {
+    float: left;
+    width: 200px;
+}
+
+#than > article {
+    margin-left: 215px;          /* 200px danh mục + 15px khoảng cách */
+}
+
+/* ===== DANH MỤC DỌC ===== */
+.menu-title {
+    background-color: #d70018;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px;
+}
+
+.aside_text {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.aside_text li a {
+    display: block;
+    padding: 10px 12px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+.aside_text li a:hover {
+    background-color: #fff2f2;
+    color: #d70018;
+}
+
+.aside_text li a.active {
+    background-color: #fff2f2;
+    color: #d70018;
+    font-weight: bold;
+}
+
+/* ===== SẢN PHẨM ===== */
+article h2 {
+    font-size: 18px;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #d70018;
+}
+
+/* Thẻ sản phẩm: 3 thẻ một hàng, cao bằng nhau, nút mua luôn nằm đáy */
+.sanpham {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 31.9%;
+    height: 340px;
+    margin: 0 2% 12px 0;
+    border: 1px solid #ddd;
+    padding: 10px 10px 54px;     /* chừa chỗ cho hàng mua ở đáy */
+}
+
+.sanpham:nth-child(3n) {
+    margin-right: 0;
+}
+
+/* Khung ảnh cố định chiều cao, kể cả khi ảnh lỗi */
+.khung-anh {
+    position: relative;
+    height: 180px;
+    background-color: #fafafa;
+    overflow: hidden;
+}
+
+.khung-anh img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.sanpham h3 {
+    font-size: 14px;
+    margin: 8px 0 5px;
+}
+
+.sanpham .ctsp {
+    font-size: 12px;
+    color: #777;
+    margin: 0 0 8px;
+}
+
+/* Giá */
+.gia-goc {
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 6px;
+}
+
+.gia-ban {
+    color: #d70018;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nhan-giam {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    z-index: 1;
+    color: #fff;
+    background-color: #ff6a00;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Ô số lượng + nút mua */
+.hang-mua {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+.hang-mua input {
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    height: 34px;
+    padding: 6px;
+    border: 1px solid #ddd;
+}
+
+.hang-mua button {
+    display: inline-block;
+    vertical-align: top;
+    height: 34px;
+    background-color: #d70018;
+    color: #fff;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.hang-mua button:hover {
+    background-color: #b00014;
+}
+
+.khong-co-sp {
+    color: #777;
+    text-align: center;
+    padding: 24px;
+}
+
+/* ===== CHÂN TRANG ===== */
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ===== GIỎ HÀNG ===== */
+#showgiohang {
+    display: none;               /* ẩn mặc định */
+    position: absolute;
+    top: 100%;                   /* ngay dưới menu */
+    right: 0;
+    z-index: 10;
+    width: 600px;
+    max-width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+#showgiohang.hien {
+    display: block;
+}
+
+.gio-tieude {
+    position: sticky;            /* vẫn thấy nút ✕ khi cuộn giỏ dài */
+    top: 0;
+    z-index: 2;
+    overflow: hidden;            /* chứa nút ✕ đang float */
+    line-height: 30px;
+    padding: 8px 12px;
+    background-color: #fff;
+    border-bottom: 2px solid #d70018;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#dong-gio-hang {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: #d70018;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#dong-gio-hang:hover {
+    background-color: #b00014;
+}
+
+#showgiohang table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#showgiohang td {
+    padding: 6px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+#showgiohang td p {
+    margin: 0;
+}
+
+#showgiohang img {
+    width: 60px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+}
+
+#showgiohang .gio-trong {
+    text-align: center;
+    color: #777;
+    padding: 24px;
+}
+
+#showgiohang .gio-tong td {
+    font-weight: bold;
+    border-bottom: none;
+}
+
+#showgiohang .tong-tien {
+    color: #d70018;
+    font-size: 16px;
+}
+
+#showgiohang button.nut-xoa,
+#showgiohang button.nut-thanhtoan {
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#showgiohang button.nut-xoa {
+    background-color: #888;
+}
+
+#showgiohang button.nut-xoa:hover {
+    background-color: #555;
+}
+
+#showgiohang button.nut-thanhtoan {
+    background-color: #d70018;
+    padding: 8px 16px;
+}
+
+#showgiohang button.nut-thanhtoan:hover {
+    background-color: #b00014;
+}
+
+/* ===== FOOTER BÁO CÁO NHÓM ===== */
+.ft-sinhvien {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 20px 0 15px 0;
+    margin-top: 20px;
+    border-top: 3px solid #d70018; 
+}
+
+/* Phần thông tin 2 cột bên trên */
+.ft-noidung {
+    width: calc(100% - 30px);
+    max-width: 930px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Xóa float để footer cao đủ chứa 2 cột */
+.ft-noidung::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ft-trai, .ft-phai {
+    width: 45%;
+    text-align: left;
+}
+
+.ft-trai {
+    float: left;
+}
+
+.ft-phai {
+    float: right;
+}
+
+.ft-tieude {
+    color: #ffffff; 
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.ft-sinhvien p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #cccccc;
+}
+
+/* Dòng bản quyền nằm sát lề bên phải như McDonald's */
+.ft-banquyen {
+    width: calc(100% - 30px);
+    max-width: 930px;
+    margin: 15px auto 0 auto;
+    border-top: 1px solid #333333;
+    padding-top: 12px;
+    text-align: right; /* Căn lề phải đúng kiểu McDonald's */
+}
+
+.ft-banquyen p {
+    font-size: 13px;
+    color: #cccccc;
+    text-align: right;
+}
+/* ===== ĐỊNH VỊ LOGO GÓC TRÁI BANNER ===== */
+header {
+    position: relative; /* Giúp căn chỉnh logo theo khung header */
+}
+
+.site-logo {
+    position: absolute;
+    top: 15px;  /* Cách mép trên 15px */
+    left: 15px; /* Cách mép trái 15px */
+    width: 65px;  /* Kích thước logo vuông nhỏ gọn */
+    height: 65px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+/* ===== GIAO DIEN TOI (co dinh) ===== */
+html[data-theme="dark"] { color-scheme: dark; }
+html[data-theme="dark"] body {
+    background-color: #121212;
+    color: #e8e8e8;
+}
+html[data-theme="dark"] #container { background-color: #1c1c1c; }
+html[data-theme="dark"] .sanpham,
+html[data-theme="dark"] .khung {
+    background-color: #252525;
+    border-color: #444;
+}
+html[data-theme="dark"] .khung-anh { background-color: #fff; }
+html[data-theme="dark"] .aside_text { border-color: #444; }
+html[data-theme="dark"] .aside_text li a {
+    color: #e8e8e8;
+    border-bottom-color: #383838;
+}
+html[data-theme="dark"] .aside_text li a:hover,
+html[data-theme="dark"] .aside_text li a.active {
+    background-color: #44252b;
+    color: #ff9ba6;
+}
+html[data-theme="dark"] .sanpham .ctsp,
+html[data-theme="dark"] .gia-goc,
+html[data-theme="dark"] .khong-co-sp { color: #bcbcbc; }
+html[data-theme="dark"] .gia-ban,
+html[data-theme="dark"] .giam,
+html[data-theme="dark"] .noidung h1,
+html[data-theme="dark"] #showgiohang .tong-tien { color: #ff8493; }
+html[data-theme="dark"] #showgiohang,
+html[data-theme="dark"] .gio-tieude {
+    background-color: #252525;
+    color: #e8e8e8;
+}
+html[data-theme="dark"] #showgiohang td { border-bottom-color: #444; }
+html[data-theme="dark"] #showgiohang .gio-trong { color: #bcbcbc; }
+html[data-theme="dark"] .hang-mua input,
+html[data-theme="dark"] .noidung input,
+html[data-theme="dark"] .noidung textarea {
+    background-color: #303030;
+    color: #fff;
+    border-color: #555;
+}
+html[data-theme="dark"] .noidung a { color: #ff9ba6; }
+
+/* ============ DI ĐỘNG: dùng float và inline-block ============ */
+
+/* Cửa sổ hẹp / máy tính bảng: thẻ sản phẩm hẹp hơn nên giá và nút mua gọn lại */
+@media (max-width: 960px) {
+    .sanpham {
+        height: 375px;
+    }
+
+    .gia-goc {
+        display: block;          /* giá gốc nằm trên giá bán */
+        margin-right: 0;
+    }
+
+    .hang-mua button {
+        width: calc(100% - 51px);
+        padding: 0 4px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    header img {
+        height: auto;            /* banner giữ đúng tỉ lệ */
+    }
+
+    .menu > a {
+        margin-right: 15px;
+    }
+}
+
+/* Điện thoại: danh mục nằm trên, sản phẩm 2 thẻ một hàng */
+@media (max-width: 700px) {
+    .category-menu {
+        float: none;
+        width: auto;
+        margin-bottom: 15px;
+    }
+
+    #than > article {
+        margin-left: 0;
+    }
+
+    .sanpham {
+        width: 47.4%;
+        margin-right: 5%;
+        height: 360px;
+    }
+
+    .sanpham:nth-child(3n) {
+        margin-right: 5%;
+    }
+
+    .sanpham:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .ft-trai,
+    .ft-phai {
+        float: none;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .ft-banquyen,
+    .ft-banquyen p {
+        text-align: center;
+    }
+
+    .site-logo {
+        top: 10px;
+        left: 10px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        padding: 0 10px;
+    }
+
+    .menu > a {
+        margin-right: 10px;
+        font-size: 13px;
+    }
+
+    #than {
+        padding: 10px;
+    }
+
+    .sanpham {
+        padding: 8px 8px 50px;
+        height: 320px;
+    }
+
+    .khung-anh {
+        height: 130px;
+    }
+
+    .hang-mua {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+    }
+
+    .hang-mua input {
+        width: 40px;
+        padding: 6px 4px;
+    }
+
+    .hang-mua button {
+        width: calc(100% - 41px);
+    }
+
+    /* Giỏ hàng gọn hơn */
+    #showgiohang td {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    #showgiohang img {
+        width: 40px;
+        height: 40px;
+    }
+
+    #showgiohang button.nut-xoa {
+        padding: 4px 6px;
+    }
+}
+
+/* ============ TÀI KHOẢN: ĐĂNG KÝ / ĐĂNG NHẬP ============ */
+.menu > .chao {
+    display: inline-block;
+    line-height: 40px;
+    margin: 6px 15px 6px 0;
+    color: #fff;
+}
+
+.menu .dang-xem {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+.form-tk {
+    max-width: 420px;
+}
+
+.form-tk .goi-y {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #777;
+}
+
+.thongbao {
+    display: none;
+    max-width: 420px;
+    margin: 14px 0;
+    padding: 10px 14px;
+    border-left: 4px solid;
+}
+
+.thongbao.hien {
+    display: block;
+}
+
+.thongbao.loi {
+    background-color: #fdecee;
+    border-color: #d70018;
+    color: #a0001a;
+}
+
+.thongbao.ok {
+    background-color: #e8f6ec;
+    border-color: #2e9e50;
+    color: #1d6b36;
+}
+
+html[data-theme="dark"] .form-tk .goi-y {
+    color: #bcbcbc;
+}
+
+html[data-theme="dark"] .thongbao.loi {
+    background-color: #3a1a1e;
+    color: #ff9ba6;
+}
+
+html[data-theme="dark"] .thongbao.ok {
+    background-color: #1c3324;
+    color: #8be0a4;
+}
+
+/* ============ ICON SVG ============ */
+.ic {
+    display: inline-block;
+    width: 1.15em;
+    height: 1.15em;
+    vertical-align: -0.2em;
+}
+.ic svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ============ GÓC PHẢI MENU: ĐĂNG NHẬP / ĐĂNG KÝ / USER / GIỎ HÀNG ============
+   Dùng float cho cả khối và inline-block cho các phần tử bên trong. */
+#top-right {
+    float: right;
+    height: 52px;
+    line-height: 52px;           /* căn giữa theo chiều dọc cho các phần tử inline-block */
+    white-space: nowrap;
+}
+#top-right > *,
+#tk-khu > * {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+.tk-nut {
+    display: inline-block;
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+    background: transparent;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 34px;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.tk-nut:hover { background: rgba(255, 255, 255, 0.2); }
+.tk-nut .ic { margin-right: 2px; }
+.tk-nut-chinh { background: #fff; color: #d70018; border-color: #fff; }
+.tk-nut-chinh:hover { background: #ffe3e7; }
+.tk-ten {
+    display: inline-block;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.tk-user { position: relative; line-height: 36px; }
+.tk-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 210px;
+    padding: 6px;
+    background: #252525;
+    color: #e8e8e8;
+    border: 1px solid #444;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    line-height: 1.4;
+    text-align: left;
+    white-space: normal;
+    z-index: 30;
+}
+.tk-dropdown.hien { display: block; }
+.tk-dropdown a {
+    display: block;
+    padding: 10px 12px;
+    color: #e8e8e8;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.tk-dropdown a .ic { margin-right: 8px; }
+.tk-dropdown a:hover { background: #44252b; color: #ff9ba6; }
+.tk-dropdown a.tk-ra { margin-top: 4px; border-top: 1px solid #444; border-radius: 0 0 6px 6px; color: #ff9ba6; }
+
+#btn-gio-hang {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 0 0 8px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+#btn-gio-hang:hover { background: rgba(255, 255, 255, 0.3); }
+#btn-gio-hang .ic { width: 22px; height: 22px; vertical-align: middle; }
+.gio-dem {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 4px;
+    border-radius: 10px;
+    background: #ffd23f;
+    color: #222;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 19px;
+    text-align: center;
+}
+
+/* ============ TÌM KIẾM ============
+   Icon đặt tuyệt đối bên trái, nút float bên phải, ô nhập float bên trái ở giữa. */
+.tim-kiem {
+    position: relative;
+    overflow: hidden;            /* chứa các phần tử float bên trong */
+    margin-bottom: 10px;
+    padding: 4px 4px 4px 14px;
+    border: 1px solid #555;
+    border-radius: 24px;
+    background: #303030;
+    color: #bbb;
+}
+.tim-kiem:focus-within { border-color: #ff8493; }
+.tim-kiem > .ic {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    margin-top: -0.575em;
+}
+.tim-kiem input {
+    float: left;
+    width: calc(100% - 134px);
+    margin-left: 26px;
+    padding: 9px 4px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+}
+.tim-kiem button {
+    float: right;
+    width: 104px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    border-radius: 18px;
+    background: #d70018;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.tim-kiem button:hover { background: #b00014; }
+.tim-thongke { margin: 0 0 12px; color: #bcbcbc; }
+.tim-khong-co {
+    position: relative;
+    margin-bottom: 12px;
+    padding: 14px 14px 14px 50px;
+    border: 1px solid #5a3a3f;
+    border-left: 4px solid #d70018;
+    border-radius: 6px;
+    background: #3a1a1e;
+    color: #ff9ba6;
+    line-height: 1.5;
+}
+.tim-khong-co .ic { position: absolute; left: 14px; top: 16px; width: 22px; height: 22px; }
+.goiy-tieude { margin: 0 0 10px; font-size: 16px; }
+
+/* ============ PHÂN TRANG ============ */
+.phan-trang { text-align: center; margin: 10px 0 4px; }
+.phan-trang button {
+    min-width: 38px;
+    height: 38px;
+    margin: 0 3px 6px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background: #252525;
+    color: #e8e8e8;
+    font-weight: bold;
+    cursor: pointer;
+}
+.phan-trang button:hover { border-color: #ff8493; color: #ff9ba6; }
+.phan-trang button.hien-tai { background: #d70018; border-color: #d70018; color: #fff; }
+
+/* ============ QUẢN LÝ SẢN PHẨM (khi đã đăng nhập admin) ============ */
+.thanh-quanly {
+    display: none;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border: 1px dashed #d70018;
+    border-radius: 8px;
+    background: #2a1d20;
+    color: #ff9ba6;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.nut-vien {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 8px 14px;
+    border: 1px solid #ff8493;
+    border-radius: 6px;
+    background: transparent;
+    color: #ff9ba6;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.nut-vien .ic { margin-right: 4px; }
+.nut-vien:hover { background: #44252b; }
+.nut-vien.chinh { background: #d70018; border-color: #d70018; color: #fff; }
+.nut-vien.chinh:hover { background: #b00014; }
+
+.sp-quanly {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    z-index: 2;
+    white-space: nowrap;
+}
+.sp-quanly button {
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    margin-left: 6px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.sp-quanly button:hover { background: #d70018; }
+.sp-quanly .ic { width: 16px; height: 16px; vertical-align: middle; }
+.hang-mua button .ic { vertical-align: -0.25em; margin-right: 2px; }
+
+/* ----- Cửa sổ thêm / sửa sản phẩm: nền phủ kín, hộp căn giữa bằng position + transform ----- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.68);
+}
+.modal.hien { display: block; }
+.modal-hop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 32px);
+    max-width: 480px;
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 18px;
+    background: #252525;
+    color: #e8e8e8;
+    border: 1px solid #444;
+    border-radius: 12px;
+}
+.modal-dau { overflow: hidden; margin-bottom: 6px; }
+.modal-dau h3 { float: left; margin: 0; font-size: 18px; line-height: 32px; }
+.modal-dau h3 .ic { margin-right: 8px; }
+.modal-dong {
+    float: right;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #3a3a3a;
+    color: #fff;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+}
+.modal-dong .ic { vertical-align: middle; }
+.modal-dong:hover { background: #d70018; }
+.modal-hop form { clear: both; }
+.modal-hop label { display: block; margin-top: 10px; font-weight: bold; }
+.modal-hop input, .modal-hop select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #303030;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+}
+/* Hai ô giá nằm cạnh nhau: mỗi ô float một bên */
+.hai-cot { overflow: hidden; }
+.hai-cot > div { float: left; width: 48.5%; }
+.hai-cot > div + div { float: right; }
+.anh-xem {
+    display: block;
+    width: 100%;
+    height: 140px;
+    margin-top: 8px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #fff;
+}
+.modal-nut { margin-top: 14px; }
+
+/* ============ GIỎ HÀNG: SỐ LƯỢNG + CẢNH BÁO ĐĂNG NHẬP ============ */
+#showgiohang td { font-size: 13px; }
+#showgiohang .ma-sp { color: #888; }
+#showgiohang .thanh-tien { font-weight: bold; }
+#showgiohang .gio-trong .ic { width: 36px; height: 36px; color: #888; }
+#showgiohang button.nut-xoa { display: inline-block; text-align: center; border-radius: 6px; }
+#showgiohang button.nut-xoa .ic { vertical-align: middle; }
+#showgiohang button.nut-thanhtoan { display: inline-block; border-radius: 6px; }
+#showgiohang button.nut-thanhtoan .ic { margin-right: 6px; }
+.so-luong {
+    display: inline-block;
+    white-space: nowrap;
+    border: 1px solid #666;
+    border-radius: 6px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.so-luong span {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 26px;
+    line-height: 28px;
+    text-align: center;
+    font-weight: bold;
+}
+#showgiohang .so-luong button {
+    display: inline-block;
+    vertical-align: top;
+    width: 26px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: #3a3a3a;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+}
+#showgiohang .so-luong button:hover { background: #d70018; }
+#showgiohang .so-luong .ic { width: 14px; height: 14px; vertical-align: middle; }
+
+.gio-canhbao {
+    padding: 12px 14px;
+    border: 1px solid #5a3a3f;
+    border-left: 4px solid #d70018;
+    border-radius: 6px;
+    background: #3a1a1e;
+    color: #ff9ba6;
+}
+.gio-canhbao p { margin: 0 0 10px; font-weight: bold; }
+.gio-canhbao .gio-dn-link, .nut-dn {
+    display: inline-block;
+    margin-right: 12px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #d70018;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+.gio-canhbao .gio-dn-link .ic, .nut-dn .ic { margin-right: 4px; }
+.gio-canhbao .gio-dn-link:hover, .nut-dn:hover { background: #b00014; }
+.gio-canhbao span { font-size: 13px; }
+.gio-canhbao span a { color: #fff; text-decoration: underline; }
+html[data-theme="dark"] .noidung a.nut-dn { color: #fff; }
+
+/* ============ ICON TRONG MENU, TIÊU ĐỀ, FOOTER ============ */
+.menu > a .ic { margin-right: 2px; }
+.aside_text li a .ic { margin-right: 8px; }
+.noidung h1 .ic, .noidung h3 .ic { margin-right: 6px; vertical-align: -0.15em; }
+.ft-sinhvien p .ic { margin-right: 6px; color: #ff8493; }
+.khung p .ic { margin-right: 8px; color: #d70018; }
+html[data-theme="dark"] .khung p .ic, html[data-theme="dark"] .noidung h3 .ic { color: #ff8493; }
+
+/* ============ THANH TÌM KIẾM + NÚT QUẢN LÝ NẰM CÙNG HÀNG ============
+   Khối quản lý float phải (đặt TRƯỚC form trong HTML); form có overflow:hidden nên
+   tự chiếm phần còn lại bên cạnh khối float. */
+.hang-tim { overflow: hidden; margin-bottom: 14px; }
+.hang-tim .tim-kiem { margin-bottom: 0; }
+.hang-tim .thanh-quanly {
+    float: right;
+    margin: 4px 0 0 10px;
+    padding: 0;
+    border: none;
+    background: none;
+}
+.hang-tim .nut-vien { margin: 0 0 0 8px; }
+
+/* ============ DI ĐỘNG ============ */
+@media (max-width: 700px) {
+    #top-right {
+        float: none;
+        width: 100%;
+        height: auto;
+        padding: 2px 0 10px;
+        line-height: normal;
+        text-align: right;
+    }
+    .hang-tim .thanh-quanly { float: none; margin: 0 0 8px; }
+    .hang-tim .nut-vien { margin: 0 8px 0 0; }
+}
+@media (max-width: 480px) {
+    .tk-nut { padding: 0 10px; font-size: 12px; }
+    .tk-ten { max-width: 90px; }
+    .tim-kiem input { width: calc(100% - 124px); }
+    .tim-kiem button { width: 94px; }
+    #showgiohang td { padding: 4px 3px; font-size: 11px; }
+    #showgiohang img { width: 34px; height: 34px; }
+    #showgiohang .so-luong button { width: 22px; }
+    .hai-cot > div,
+    .hai-cot > div + div { float: none; width: auto; }
+}

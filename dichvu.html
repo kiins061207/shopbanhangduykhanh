@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch vụ - Cửa hàng Công nghệ KD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="trangphu.css">
+    <style>
+
+/* ===== TRANG PHỤ: MENU, FOOTER, LOGO, CHẾ ĐỘ TỐI ===== */
+.menu .dang-xem {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+header .site-logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+.ft-noidung,
+.ft-banquyen {
+    width: calc(100% - 30px);
+    max-width: 930px;
+}
+@media (max-width: 600px) {
+    .ft-trai,
+    .ft-phai {
+        width: 100%;
+    }
+    .ft-banquyen,
+    .ft-banquyen p {
+        text-align: center;
+    }
+    header .site-logo {
+        top: 10px;
+        left: 10px;
+        width: 45px;
+        height: 45px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <header>
+            <img src="./img/anhbanner.png" alt="Banner cửa hàng KD">
+            <img src="./img/anhlogonho~.png" alt="Logo KD" class="site-logo">
+        </header>
+
+        <nav class="menu">
+            <a href="index.html"><span data-icon="home"></span> Trang chủ</a>
+            <a href="dichvu.html" class="dang-xem"><span data-icon="wrench"></span> Dịch vụ</a>
+            <a href="khuyenmai.html"><span data-icon="tag"></span> Khuyến mãi</a>
+            <a href="lienhe.html"><span data-icon="phone"></span> Liên hệ</a>
+            <div id="top-right">
+            </div>
+        </nav>
+
+        <div class="noidung">
+            <h1><span data-icon="wrench"></span> Dịch vụ</h1>
+
+            <div class="khung">
+                <h3><span data-icon="cpu"></span> Lắp ráp PC theo yêu cầu</h3>
+                <p>Tư vấn cấu hình theo nhu cầu và ngân sách, lắp ráp và kiểm tra máy trước khi giao.</p>
+            </div>
+
+            <div class="khung">
+                <h3><span data-icon="shield"></span> Bảo hành và sửa chữa</h3>
+                <p>Tiếp nhận bảo hành, sửa chữa laptop, PC và màn hình.</p>
+            </div>
+
+            <div class="khung">
+                <h3><span data-icon="zap"></span> Nâng cấp RAM, SSD</h3>
+                <p>Nâng cấp linh kiện giúp máy chạy nhanh hơn, giữ nguyên dữ liệu.</p>
+            </div>
+
+            <div class="khung">
+                <h3><span data-icon="sparkles"></span> Vệ sinh máy</h3>
+                <p>Làm sạch bụi, thay keo tản nhiệt giúp máy mát và chạy êm.</p>
+            </div>
+
+            <div class="khung">
+                <h3><span data-icon="download"></span> Cài Windows và phần mềm</h3>
+                <p>Cài hệ điều hành, driver và các phần mềm cần thiết.</p>
+            </div>
+
+            <div class="khung">
+                <h3><span data-icon="truck"></span> Giao hàng tận nơi</h3>
+                <p>Giao hàng nhanh trong nội thành, hỗ trợ lắp đặt tại nhà.</p>
+            </div>
+
+            <p>Cần tư vấn thêm? <a href="lienhe.html">Liên hệ với chúng tôi</a></p>
+        </div>
+
+        <footer class="ft-sinhvien">
+            <div class="ft-noidung">
+                <div class="ft-trai">
+                    <p class="ft-tieude">BÀI TẬP BÁO CÁO CỦA NHÓM</p>
+                    <p>Môn học: Lập trình Web cơ bản</p>
+                    <p>Thành viên thực hiện: <b>Duy và Khánh</b></p>
+                </div>
+                <div class="ft-phai">
+                    <p class="ft-tieude">THÔNG TIN LIÊN HỆ</p>
+                    <p>Cửa hàng Công nghệ KD</p>
+                    <p><span data-icon="phone"></span> SĐT: 0604 623 012</p>
+                    <p><span data-icon="mail"></span> Email: nhomduykhanh@gmail.com</p>
+                </div>
+            </div>
+            <div class="ft-banquyen"><p>© 2026 Nhóm Duy và Khánh.</p></div>
+        </footer>
+
+    </div>
+    <script src="icons.js"></script>
+    <script src="taikhoan.js"></script>
+</body>
+</html>

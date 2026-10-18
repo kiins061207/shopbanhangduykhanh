@@ -1,0 +1,62 @@
+/* CSS cho 3 trang: Dịch vụ, Khuyến mãi, Liên hệ (dùng kèm style.css) */
+
+.noidung {
+    padding: 20px;
+}
+
+.noidung h1 {
+    color: #d70018;
+    font-size: 22px;
+    margin: 0 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #d70018;
+}
+
+.noidung h3 {
+    margin: 0 0 5px;
+}
+
+.noidung p {
+    margin: 0 0 15px;
+    line-height: 1.5;
+}
+
+/* Khung nhỏ dùng cho dịch vụ, khuyến mãi, thông tin */
+.khung {
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.khung p {
+    margin: 0;
+}
+
+.giam {
+    color: #d70018;
+    font-weight: bold;
+}
+
+/* Form liên hệ */
+.noidung label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.noidung input,
+.noidung textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+}
+
+.noidung button {
+    margin-top: 12px;
+    background-color: #d70018;
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    cursor: pointer;
+}

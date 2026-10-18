@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản trị sản phẩm - Cửa hàng Công nghệ KD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="trangphu.css">
+    <style>
+        .menu .dang-xem { text-decoration: underline; opacity: 0.85; }
+
+        .ad-form { max-width: 520px; margin-bottom: 25px; padding: 16px; border: 1px solid #444; border-radius: 8px; background: #252525; }
+        .ad-form h2 { margin: 0 0 6px; font-size: 18px; }
+        .ad-form select {
+            width: 100%; padding: 8px; border: 1px solid #555; border-radius: 4px;
+            background: #303030; color: #fff; font-family: inherit; font-size: 14px;
+        }
+        .ad-ma { font-weight: bold; color: #ff8493; }
+        .ad-goiy { margin: 4px 0 0 !important; font-size: 12px; color: #bcbcbc; }
+        .ad-xem { display: none; width: 140px; height: 110px; margin-top: 8px; object-fit: contain; background: #fff; border-radius: 6px; }
+        .ad-nut { margin-top: 14px; }
+        .ad-nut button { margin: 0 10px 0 0; }
+
+        .ad-dau { overflow: hidden; margin-bottom: 10px; }
+        .ad-dau h2 { float: left; margin: 0 10px 6px 0; font-size: 18px; line-height: 32px; }
+        .ad-loc { float: right; margin-bottom: 6px; line-height: 32px; }
+        .ad-dau select {
+            padding: 7px; border: 1px solid #555; border-radius: 4px;
+            background: #303030; color: #fff; font-family: inherit;
+        }
+        .ad-bang { width: 100%; border-collapse: collapse; }
+        .ad-bang th, .ad-bang td { border: 1px solid #444; padding: 8px; text-align: left; vertical-align: middle; }
+        .ad-bang th { background: #2f2f2f; }
+        .ad-bang img { width: 60px; height: 50px; object-fit: contain; background: #fff; display: block; border-radius: 4px; }
+        .ad-bang .hd { white-space: nowrap; }
+        .ad-bang .hd button { margin: 0 4px 0 0; padding: 6px 10px; font-size: 13px; display: inline-block; }
+        .ad-bang .hd button .ic { margin-right: 4px; }
+        .ad-bang .hd .nut-xoa { background-color: #888; }
+        .ad-bang .hd .nut-xoa:hover { background-color: #d70018; }
+        .ad-cuon { overflow-x: auto; }
+        .ad-chan { padding: 40px 0; text-align: center; }
+
+        @media (max-width: 700px) { .ad-bang .cot-mota { display: none; } .ad-bang { font-size: 12px; } }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <header>
+            <img src="./img/anhbanner.png" alt="Banner cửa hàng KD">
+            <img src="./img/anhlogonho~.png" alt="Logo KD" class="site-logo">
+        </header>
+
+        <nav class="menu">
+            <a href="index.html"><span data-icon="home"></span> Trang chủ</a>
+            <a href="dichvu.html"><span data-icon="wrench"></span> Dịch vụ</a>
+            <a href="khuyenmai.html"><span data-icon="tag"></span> Khuyến mãi</a>
+            <a href="lienhe.html"><span data-icon="phone"></span> Liên hệ</a>
+            <div id="top-right"></div>
+        </nav>
+
+        <div class="noidung" id="vung-admin" style="display:none">
+            <h1><span data-icon="layout"></span> Quản trị sản phẩm</h1>
+
+            <!-- Form dùng chung cho Thêm mới và Sửa -->
+            <form id="form-sp" class="ad-form" novalidate>
+                <h2 id="tieude-form">Thêm sản phẩm mới</h2>
+                <p>Mã sản phẩm: <span class="ad-ma" id="ma-hien-thi"></span></p>
+
+                <label for="ten">Tên sản phẩm</label>
+                <input type="text" id="ten" maxlength="100">
+
+                <label for="loai">Loại sản phẩm</label>
+                <select id="loai">
+                    <option value="">-- Chọn loại --</option>
+                    <option value="pc">PC</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="phukien">Phụ kiện</option>
+                    <option value="manhinh">Màn hình</option>
+                </select>
+
+                <label for="gia">Giá bán (đ)</label>
+                <input type="number" id="gia" min="0">
+
+                <label for="giagoc">Giá gốc (đ) - có thể bỏ trống</label>
+                <input type="number" id="giagoc" min="0">
+
+                <label for="mota">Mô tả / cấu hình ngắn</label>
+                <input type="text" id="mota" maxlength="120">
+
+                <label for="hinh">Hình ảnh</label>
+                <input type="file" id="hinh" accept="image/*">
+                <p class="ad-goiy" id="goi-y-hinh">Không bắt buộc. Nếu không chọn ảnh, trang sản phẩm sẽ hiện ảnh lỗi.</p>
+                <img id="xem-hinh" class="ad-xem" alt="Xem trước ảnh">
+
+                <p id="thongbao" class="thongbao" role="status"></p>
+
+                <div class="ad-nut">
+                    <button type="submit" id="nut-luu">Thêm sản phẩm</button>
+                    <button type="button" id="nut-huy" style="display:none;background-color:#888">Hủy sửa</button>
+                </div>
+            </form>
+
+            <div class="ad-dau">
+                <h2>Danh sách sản phẩm (<span id="tong-sp">0</span>)</h2>
+                <div class="ad-loc">
+                    <label for="loc-loai" style="display:inline;margin:0 6px 0 0">Lọc:</label>
+                    <select id="loc-loai">
+                        <option value="tatca">Tất cả</option>
+                        <option value="laptop">Laptop</option>
+                        <option value="pc">PC</option>
+                        <option value="manhinh">Màn hình</option>
+                        <option value="phukien">Phụ kiện</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ad-cuon">
+                <table class="ad-bang">
+                    <thead>
+                        <tr><th>Mã</th><th>Ảnh</th><th>Tên</th><th>Loại</th><th>Giá bán</th><th class="cot-mota">Mô tả</th><th>Thao tác</th></tr>
+                    </thead>
+                    <tbody id="ds-admin"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="ft-sinhvien">
+            <div class="ft-noidung">
+                <div class="ft-trai">
+                    <p class="ft-tieude">BÀI TẬP BÁO CÁO CỦA NHÓM</p>
+                    <p>Môn học: Lập trình Web cơ bản</p>
+                    <p>Thành viên thực hiện: <b>Duy & Khánh</b></p>
+                </div>
+                <div class="ft-phai">
+                    <p class="ft-tieude">THÔNG TIN LIÊN HỆ</p>
+                    <p>Cửa hàng Công nghệ KD</p>
+                    <p><span data-icon="phone"></span> SĐT: 0604 623 012</p>
+                    <p><span data-icon="mail"></span> Email: nhomduykhanh@gmail.com</p>
+                </div>
+            </div>
+            <div class="ft-banquyen"><p>© 2026 Nhóm Duy & Khánh.</p></div>
+        </footer>
+
+    </div>
+    <script src="icons.js"></script>
+    <script src="taikhoan.js"></script>
+    <script src="dulieu.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

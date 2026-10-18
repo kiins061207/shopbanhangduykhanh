@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web bán hàng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <img src="./img/anhbanner.png" alt="banner">
+            <img src="./img/anhlogonho~.png" alt="Logo KD" class="site-logo">
+            <!-- Giỏ hàng chỉ đặt trong nav, tránh trùng id. -->
+        </header>
+
+        <nav class="menu">
+            <a href="index.html"><span data-icon="home"></span> Trang chủ</a>
+            <a href="dichvu.html"><span data-icon="wrench"></span> Dịch vụ</a>
+            <a href="khuyenmai.html"><span data-icon="tag"></span> Khuyến mãi</a>
+            <a href="lienhe.html"><span data-icon="phone"></span> Liên hệ</a>
+
+            <div id="top-right">
+                <button type="button" id="btn-gio-hang" onclick="hienThiGioHang()"
+                        title="Giỏ hàng (phím C)" aria-label="Mở giỏ hàng">
+                    <span data-icon="cart"></span>
+                    <span id="gio-dem" class="gio-dem" style="display:none">0</span>
+                </button>
+            </div>
+
+            <div id="showgiohang">
+                <div class="gio-tieude">
+                    <span><span data-icon="cart"></span> Giỏ hàng</span>
+                    <button id="dong-gio-hang" type="button" title="Đóng (Esc)"
+                            aria-label="Đóng giỏ hàng"><span data-icon="x"></span></button>
+                </div>
+                <table><tbody id="danhsachsanpham"></tbody></table>
+            </div>
+        </nav>
+
+        <div id="than">
+            <aside class="category-menu">
+                <div class="menu-title">Danh mục sản phẩm</div>
+                <ul class="aside_text">
+                    <li><a href="#" data-loai="tatca"><span data-icon="grid"></span> Tất cả</a></li>
+                    <li><a href="#" data-loai="laptop"><span data-icon="laptop"></span> Laptop</a></li>
+                    <li><a href="#" data-loai="pc"><span data-icon="cpu"></span> PC</a></li>
+                    <li><a href="#" data-loai="manhinh"><span data-icon="monitor"></span> Màn hình</a></li>
+                    <li><a href="#" data-loai="phukien"><span data-icon="headphones"></span> Phụ kiện</a></li>
+                </ul>
+            </aside>
+            <article>
+                <h2 id="tieude-sp">Sản phẩm</h2>
+
+                <div class="hang-tim">
+                    <!-- Chỉ hiện khi là admin (đặt trước form để float phải nằm cùng hàng): thêm sản phẩm / khôi phục mặc định -->
+                    <div id="thanh-quanly" class="thanh-quanly">
+                        <button type="button" class="nut-vien chinh" id="btn-them-sp"><span data-icon="plus"></span> Thêm sản phẩm</button>
+                        <button type="button" class="nut-vien" id="btn-khoiphuc" title="Khôi phục danh sách sản phẩm ban đầu"><span data-icon="rotate"></span> Khôi phục</button>
+                    </div>
+                    <form id="form-timkiem" class="tim-kiem" role="search">
+                    <span data-icon="search"></span>
+                    <input type="search" id="o-timkiem" list="ds-goiy-ten" autocomplete="off"
+                           placeholder="Tìm sản phẩm: laptop, RTX 4060, màn hình 180Hz..." aria-label="Tìm sản phẩm">
+                    <datalist id="ds-goiy-ten"></datalist>
+                    <button type="submit">Tìm kiếm</button>
+                </form>
+                </div>
+                <div id="ketqua-tim"></div>
+
+                <div id="showsanpham"></div>
+                <div id="phantrang" class="phan-trang" aria-label="Chọn trang"></div>
+            </article>
+        </div>
+
+        <footer class="ft-sinhvien">
+            <div class="ft-noidung">
+                <div class="ft-trai">
+                    <p class="ft-tieude">BÀI TẬP BÁO CÁO CỦA NHÓM</p>
+                    <p>Môn học: Lập trình Web cơ bản</p>
+                    <p>Thành viên thực hiện: <b>Duy & Khánh</b></p>
+                </div>
+                <div class="ft-phai">
+                    <p class="ft-tieude">THÔNG TIN LIÊN HỆ</p>
+                    <p>Cửa hàng Công nghệ KD</p>
+                    <p><span data-icon="phone"></span> SĐT: 0604 623 012</p>
+                    <p><span data-icon="mail"></span> Email: nhomduykhanh@gmail.com</p>
+                </div>
+            </div>
+            <div class="ft-banquyen"><p>© 2026 Nhóm Duy & Khánh.</p></div>
+        </footer>
+    </div>
+    <div id="modal-sp" class="modal">
+        <div class="modal-hop" role="dialog" aria-modal="true" aria-labelledby="modal-tieude">
+            <div class="modal-dau">
+                <h3 id="modal-tieude"><span data-icon="package"></span><span id="modal-tieude-chu">Thêm sản phẩm</span></h3>
+                <button type="button" class="modal-dong" id="modal-dong" aria-label="Đóng"><span data-icon="x"></span></button>
+            </div>
+            <form id="form-sp" onsubmit="return luuSanPham()" novalidate>
+                <label for="f-ten">Tên sản phẩm</label>
+                <input type="text" id="f-ten">
+                <label for="f-loai">Danh mục</label>
+                <select id="f-loai">
+                    <option value="laptop">Laptop</option>
+                    <option value="pc">PC</option>
+                    <option value="manhinh">Màn hình</option>
+                    <option value="phukien">Phụ kiện</option>
+                </select>
+                <div class="hai-cot">
+                    <div><label for="f-gia">Giá bán (đ)</label><input type="number" id="f-gia" min="0"></div>
+                    <div><label for="f-giagoc">Giá gốc (đ)</label><input type="number" id="f-giagoc" min="0"></div>
+                </div>
+                <label for="f-ctsp">Mô tả ngắn / cấu hình</label>
+                <input type="text" id="f-ctsp">
+                <label for="f-anh">Ảnh sản phẩm</label>
+                <input type="file" id="f-anh" accept="image/*">
+                <img id="f-anh-xem" class="anh-xem" alt="Xem trước ảnh">
+                <p id="f-loi" class="thongbao loi" role="alert"></p>
+                <div class="modal-nut">
+                    <button type="submit" class="nut-vien chinh">Lưu</button>
+                    <button type="button" class="nut-vien" id="f-huy">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="icons.js"></script>
+    <script src="taikhoan.js"></script>
+    <script src="dulieu.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

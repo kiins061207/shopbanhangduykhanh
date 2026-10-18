@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài khoản của tôi - Cửa hàng Công nghệ KD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="trangphu.css">
+    <link rel="stylesheet" href="nguoidung.css">
+</head>
+<body>
+    <div id="container">
+
+        <header>
+            <img src="./img/anhbanner.png" alt="Banner cửa hàng KD">
+            <img src="./img/anhlogonho~.png" alt="Logo KD" class="site-logo">
+        </header>
+
+        <nav class="menu">
+            <a href="index.html"><span data-icon="home"></span> Trang chủ</a>
+            <a href="dichvu.html"><span data-icon="wrench"></span> Dịch vụ</a>
+            <a href="khuyenmai.html"><span data-icon="tag"></span> Khuyến mãi</a>
+            <a href="lienhe.html"><span data-icon="phone"></span> Liên hệ</a>
+            <div id="top-right"></div>
+        </nav>
+
+        <div class="noidung nd-wrap">
+
+            <div class="nd-breadcrumb">
+                <a href="index.html">Trang chủ</a>
+                <span class="nd-gach">/</span>
+                <span id="nd-muc-hientai">Tổng quan</span>
+            </div>
+
+            <div class="nd-bocuc">
+
+                <!-- ===== CỘT TRÁI ===== -->
+                <aside class="nd-the">
+                    <div class="nd-thongtin">
+                        <div class="nd-avatar" id="nd-avatar">?</div>
+                        <span class="nd-ten" id="nd-ten">...</span>
+                    </div>
+                    <a href="lienhe.html" class="nd-hotro"><span data-icon="chat"></span> Liên hệ hỗ trợ</a>
+
+                    <ul class="nd-menu">
+                        <li><a href="#tongquan" data-muc="tongquan" class="active"><span class="nd-icon" data-icon="layout"></span> Tổng quan</a></li>
+                        <li><a href="#donhang" data-muc="donhang"><span class="nd-icon" data-icon="package"></span> Đơn hàng của tôi</a></li>
+                        <li><a href="#baohanh" data-muc="baohanh"><span class="nd-icon" data-icon="shield"></span> Bảo hành</a></li>
+                        <li><a href="#diachi" data-muc="diachi"><span class="nd-icon" data-icon="pin"></span> Sổ địa chỉ</a></li>
+                        <li><a href="#thongtin" data-muc="thongtin"><span class="nd-icon" data-icon="user"></span> Thông tin cá nhân</a></li>
+                        <li><a href="#matkhau" data-muc="matkhau"><span class="nd-icon" data-icon="key"></span> Đổi mật khẩu</a></li>
+                        <li><a href="#" id="nd-dangxuat" class="nd-thoat"><span class="nd-icon" data-icon="logout"></span> Đăng xuất</a></li>
+                    </ul>
+                </aside>
+
+                <!-- ===== CỘT PHẢI ===== -->
+                <main class="nd-noidung">
+
+                    <section id="muc-tongquan" class="nd-muc hien">
+                        <h2>Tổng quan</h2>
+                        <div class="nd-thongke">
+                            <div class="nd-o"><span class="nd-so" id="tk-sodon">0</span><span>Đơn hàng</span></div>
+                            <div class="nd-o"><span class="nd-so" id="tk-chitieu">0đ</span><span>Tổng chi tiêu</span></div>
+                            <div class="nd-o"><span class="nd-so" id="tk-baohanh">0</span><span>SP còn bảo hành</span></div>
+                        </div>
+                        <h3>Đơn hàng gần đây</h3>
+                        <div id="tq-donmoi"></div>
+                        <p><a href="#donhang" data-muc="donhang">Xem tất cả đơn hàng &rarr;</a>
+                           &nbsp;|&nbsp; <a href="index.html">Tiếp tục mua sắm</a></p>
+                    </section>
+
+                    <section id="muc-donhang" class="nd-muc">
+                        <h2>Đơn hàng của tôi</h2>
+                        <div class="nd-tabs" id="nd-tabs">
+                            <button type="button" data-tt="tatca" class="active">Tất cả</button>
+                            <button type="button" data-tt="cho">Chờ xác nhận</button>
+                            <button type="button" data-tt="giao">Đang giao</button>
+                            <button type="button" data-tt="xong">Hoàn thành</button>
+                            <button type="button" data-tt="huy">Đã hủy</button>
+                        </div>
+                        <div id="ds-donhang"></div>
+                    </section>
+
+                    <section id="muc-baohanh" class="nd-muc">
+                        <h2>Bảo hành</h2>
+                        <p class="nd-ghichu">Sản phẩm được bảo hành 12 tháng kể từ ngày đặt hàng.</p>
+                        <div id="ds-baohanh"></div>
+                        <h3 class="nd-tieude-phu">Yêu cầu bảo hành đã gửi</h3>
+                        <div id="ds-yeucau"></div>
+                    </section>
+
+                    <section id="muc-diachi" class="nd-muc">
+                        <h2>Sổ địa chỉ</h2>
+                        <div id="ds-diachi"></div>
+                        <h3 class="nd-tieude-phu">Thêm địa chỉ mới</h3>
+                        <form class="form-tk" onsubmit="return themDiaChi()" novalidate>
+                            <label for="dc-ten">Tên người nhận</label>
+                            <input type="text" id="dc-ten">
+                            <label for="dc-sdt">Số điện thoại</label>
+                            <input type="tel" id="dc-sdt">
+                            <label for="dc-dc">Địa chỉ (số nhà, đường, phường/xã, quận/huyện)</label>
+                            <input type="text" id="dc-dc">
+                            <button type="submit">Thêm địa chỉ</button>
+                        </form>
+                        <p id="tb-diachi" class="thongbao" role="status"></p>
+                    </section>
+
+                    <section id="muc-thongtin" class="nd-muc">
+                        <h2>Thông tin cá nhân</h2>
+                        <form class="form-tk" onsubmit="return luuThongTin()" novalidate>
+                            <label for="nd-f-hoten">Họ và tên</label>
+                            <input type="text" id="nd-f-hoten">
+                            <label for="nd-f-email">Email (không thể đổi)</label>
+                            <input type="email" id="nd-f-email" disabled>
+                            <label for="nd-f-sdt">Số điện thoại</label>
+                            <input type="tel" id="nd-f-sdt">
+                            <button type="submit">Lưu thay đổi</button>
+                        </form>
+                        <p id="tb-thongtin" class="thongbao" role="status"></p>
+                    </section>
+
+                    <section id="muc-matkhau" class="nd-muc">
+                        <h2>Đổi mật khẩu</h2>
+                        <form class="form-tk" onsubmit="return doiMatKhau()" novalidate>
+                            <label for="nd-mk-cu">Mật khẩu hiện tại</label>
+                            <input type="password" id="nd-mk-cu" autocomplete="current-password">
+                            <label for="nd-mk-moi">Mật khẩu mới (ít nhất 6 ký tự)</label>
+                            <input type="password" id="nd-mk-moi" autocomplete="new-password">
+                            <label for="nd-mk-lai">Nhập lại mật khẩu mới</label>
+                            <input type="password" id="nd-mk-lai" autocomplete="new-password">
+                            <button type="submit">Đổi mật khẩu</button>
+                        </form>
+                        <p id="tb-matkhau" class="thongbao" role="status"></p>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+
+        <footer class="ft-sinhvien">
+            <div class="ft-noidung">
+                <div class="ft-trai">
+                    <p class="ft-tieude">BÀI TẬP BÁO CÁO CỦA NHÓM</p>
+                    <p>Môn học: Lập trình Web cơ bản</p>
+                    <p>Thành viên thực hiện: <b>Duy & Khánh</b></p>
+                </div>
+                <div class="ft-phai">
+                    <p class="ft-tieude">THÔNG TIN LIÊN HỆ</p>
+                    <p>Cửa hàng Công nghệ KD</p>
+                    <p><span data-icon="phone"></span> SĐT: 0604 623 012</p>
+                    <p><span data-icon="mail"></span> Email: nhomduykhanh@gmail.com</p>
+                </div>
+            </div>
+            <div class="ft-banquyen"><p>© 2026 Nhóm Duy & Khánh.</p></div>
+        </footer>
+
+    </div>
+    <script src="icons.js"></script>
+    <script src="taikhoan.js"></script>
+    <script src="nguoidung.js"></script>
+</body>
+</html>

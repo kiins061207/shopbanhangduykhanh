@@ -1,0 +1,164 @@
+/* CSS cho trang người dùng (dùng kèm style.css và trangphu.css) */
+
+/* ----- Phần dùng chung với các trang phụ ----- */
+.menu .dang-xem { text-decoration: underline; opacity: 0.85; }
+header .site-logo {
+    position: absolute; top: 15px; left: 15px;
+    width: 65px; height: 65px; object-fit: contain;
+    border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); z-index: 5;
+}
+
+/* ----- Breadcrumb ----- */
+.nd-wrap { background-color: #f2f2f2; }
+.nd-breadcrumb { margin-bottom: 14px; font-size: 14px; }
+.nd-breadcrumb a { color: #222; font-weight: bold; text-decoration: none; }
+.nd-breadcrumb a:hover { text-decoration: underline; }
+.nd-gach { margin: 0 6px; color: #888; }
+#nd-muc-hientai { color: #999; font-weight: bold; }
+
+/* ----- Bố cục 2 cột ----- */
+.nd-bocuc::after { content: ""; display: table; clear: both; }   /* chứa phần tử float */
+.nd-noidung { margin-left: 280px; }                               /* 260px thẻ + 20px cách */
+
+/* ----- Thẻ bên trái ----- */
+.nd-the {
+    float: left;
+    width: 260px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px 0 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.nd-thongtin { display: table; width: calc(100% - 32px); margin: 0 16px; }
+.nd-avatar {
+    display: table-cell; width: 56px; height: 56px; border-radius: 50%;
+    background-color: #e53935; color: #fff;
+    font-size: 24px; font-weight: bold;
+    text-align: center; vertical-align: middle; text-transform: lowercase;
+}
+.nd-ten { display: table-cell; padding-left: 12px; vertical-align: middle; font-weight: bold; font-size: 16px; word-break: break-word; }
+.nd-hotro {
+    display: block; padding: 12px 16px 14px;
+    color: #e53935; font-weight: bold; font-size: 13px; text-decoration: none;
+    border-bottom: 1px solid #e5e5e5;
+}
+.nd-hotro:hover { text-decoration: underline; }
+
+/* ----- Menu dọc ----- */
+.nd-menu { list-style: none; margin: 0; padding: 0; }
+.nd-menu li a {
+    display: block;
+    padding: 14px 16px; color: #333; font-weight: bold;
+    text-decoration: none; border-left: 3px solid transparent;
+}
+.nd-menu li a:hover { background-color: #fff2f2; }
+.nd-menu li a.active {
+    background-color: #fdeeee; color: #e53935; border-left-color: #e53935;
+}
+.nd-icon { margin-right: 12px; font-size: 16px; }
+.nd-menu li a.nd-thoat { color: #888; }
+
+/* ----- Nội dung bên phải ----- */
+.nd-muc { display: none; background-color: #fff; border-radius: 12px; padding: 20px; }
+.nd-muc.hien { display: block; }
+.nd-muc h2 { margin: 0 0 15px; font-size: 20px; }
+.nd-ghichu { color: #777; }
+.nd-tieude-phu { margin: 28px 0 0; padding-top: 16px; border-top: 1px solid #e5e5e5; }
+
+.nd-thongke { overflow: hidden; margin-bottom: 15px; }
+.nd-o {
+    float: left; width: 31%; margin-right: 3.5%; padding: 14px;
+    border: 1px solid #ddd; border-radius: 8px; text-align: center;
+}
+.nd-o:nth-child(3n) { margin-right: 0; }
+.nd-so { display: block; font-size: 20px; font-weight: bold; color: #d70018; margin-bottom: 4px; }
+
+/* Đơn hàng / bảo hành */
+.nd-don { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+.nd-don-dau {
+    overflow: hidden;
+    padding: 10px 12px; background-color: #f7f7f7; font-size: 13px;
+}
+.nd-don-dau > span { float: right; }
+.nd-don table { width: 100%; border-collapse: collapse; }
+.nd-don td { padding: 8px 12px; border-top: 1px solid #eee; }
+.nd-don td:last-child { text-align: right; white-space: nowrap; }
+.nd-don-tong { padding: 10px 12px; text-align: right; border-top: 1px solid #eee; }
+.nd-don-tong b { color: #d70018; font-size: 16px; }
+.nd-trong { text-align: center; color: #777; padding: 24px 0; }
+.nd-trong a { color: #d70018; }
+
+.nd-tag { padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: bold; }
+.nd-tag.con { background-color: #e8f6ec; color: #1d6b36; }
+.nd-tag.het { background-color: #fdecee; color: #a0001a; }
+
+/* ----- Chế độ tối ----- */
+html[data-theme="dark"] .nd-wrap { background-color: #121212; }
+html[data-theme="dark"] .nd-breadcrumb a { color: #e8e8e8; }
+html[data-theme="dark"] #nd-muc-hientai { color: #888; }
+html[data-theme="dark"] .nd-the,
+html[data-theme="dark"] .nd-muc { background-color: #252525; box-shadow: none; }
+html[data-theme="dark"] .nd-hotro,
+html[data-theme="dark"] .nd-tieude-phu { border-color: #444; }
+html[data-theme="dark"] .nd-menu li a { color: #e8e8e8; }
+html[data-theme="dark"] .nd-menu li a:hover { background-color: #33282a; }
+html[data-theme="dark"] .nd-menu li a.active { background-color: #44252b; color: #ff9ba6; }
+html[data-theme="dark"] .nd-menu li a.nd-thoat { color: #999; }
+html[data-theme="dark"] .nd-o,
+html[data-theme="dark"] .nd-don { border-color: #444; }
+html[data-theme="dark"] .nd-don-dau { background-color: #2f2f2f; }
+html[data-theme="dark"] .nd-don td,
+html[data-theme="dark"] .nd-don-tong { border-top-color: #444; }
+html[data-theme="dark"] .nd-so,
+html[data-theme="dark"] .nd-don-tong b,
+html[data-theme="dark"] .nd-trong a { color: #ff8493; }
+html[data-theme="dark"] .nd-ghichu,
+html[data-theme="dark"] .nd-trong { color: #bcbcbc; }
+html[data-theme="dark"] .nd-tag.con { background-color: #1c3324; color: #8be0a4; }
+html[data-theme="dark"] .nd-tag.het { background-color: #3a1a1e; color: #ff9ba6; }
+html[data-theme="dark"] .noidung input:disabled { opacity: 0.6; }
+
+/* ----- Di động: xếp thành 1 cột ----- */
+@media (max-width: 700px) {
+    .nd-the { float: none; width: 100%; margin-bottom: 15px; }
+    .nd-noidung { margin-left: 0; }
+    header .site-logo { top: 10px; left: 10px; width: 45px; height: 45px; }
+    .ft-trai, .ft-phai { width: 100%; }
+    .ft-banquyen, .ft-banquyen p { text-align: center; }
+}
+
+/* ----- Bổ sung: tab lọc, nhãn trạng thái, địa chỉ, nút phụ ----- */
+.nd-trai { text-align: left; }
+.nd-tabs { margin-bottom: 6px; }
+.nd-tabs button {
+    display: inline-block; margin: 0 8px 8px 0; padding: 7px 14px; border-radius: 16px;
+    background-color: #eee; color: #333; font-size: 13px;
+}
+.nd-tabs button.active { background-color: #d70018; color: #fff; }
+.nd-tag.cho { background-color: #fff4e0; color: #9a5b00; }
+.nd-tag.giao { background-color: #e6f0fd; color: #1a4f9c; }
+.nd-dc { border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin-bottom: 10px; line-height: 1.6; }
+.nd-dc-nut { margin-top: 6px; }
+.nd-wrap .nd-nut-phu {
+    margin: 0 0 0 8px; padding: 5px 12px; font-size: 12px;
+    background-color: transparent; color: #d70018; border: 1px solid #d70018; border-radius: 4px;
+}
+.nd-dc-nut .nd-nut-phu { margin: 0 8px 0 0; }
+.nd-wrap .nd-nut-phu:hover { background-color: #d70018; color: #fff; }
+html[data-theme="dark"] .nd-tabs button { background-color: #3a3a3a; color: #e8e8e8; }
+html[data-theme="dark"] .nd-tabs button.active { background-color: #d70018; color: #fff; }
+html[data-theme="dark"] .nd-tag.cho { background-color: #3a2e14; color: #ffd27a; }
+html[data-theme="dark"] .nd-tag.giao { background-color: #16283f; color: #8ec1ff; }
+html[data-theme="dark"] .nd-dc { border-color: #444; }
+html[data-theme="dark"] .nd-wrap .nd-nut-phu { color: #ff8493; border-color: #ff8493; }
+html[data-theme="dark"] .nd-wrap .nd-nut-phu:hover { background-color: #d70018; color: #fff; }
+
+/* Icon SVG trong menu trang người dùng */
+.nd-icon.ic { width: 20px; height: 20px; vertical-align: middle; }
+
+/* Điện thoại nhỏ: 3 ô thống kê xếp dọc */
+@media (max-width: 480px) {
+    .nd-o,
+    .nd-o:nth-child(3n) { float: none; width: auto; margin: 0 0 10px; }
+}
+.nd-hotro .ic { margin-right: 4px; vertical-align: -0.25em; }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Cửa hàng Công nghệ KD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="trangphu.css">
+    <style>
+
+/* ===== TRANG PHỤ: MENU, FOOTER, LOGO, CHẾ ĐỘ TỐI ===== */
+.menu .dang-xem {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+header .site-logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+.ft-noidung,
+.ft-banquyen {
+    width: calc(100% - 30px);
+    max-width: 930px;
+}
+@media (max-width: 600px) {
+    .ft-trai,
+    .ft-phai {
+        width: 100%;
+    }
+    .ft-banquyen,
+    .ft-banquyen p {
+        text-align: center;
+    }
+    header .site-logo {
+        top: 10px;
+        left: 10px;
+        width: 45px;
+        height: 45px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <header>
+            <img src="./img/anhbanner.png" alt="Banner cửa hàng KD">
+            <img src="./img/anhlogonho~.png" alt="Logo KD" class="site-logo">
+        </header>
+
+        <nav class="menu">
+            <a href="index.html"><span data-icon="home"></span> Trang chủ</a>
+            <a href="dichvu.html"><span data-icon="wrench"></span> Dịch vụ</a>
+            <a href="khuyenmai.html"><span data-icon="tag"></span> Khuyến mãi</a>
+            <a href="lienhe.html"><span data-icon="phone"></span> Liên hệ</a>
+            <div id="top-right">
+            </div>
+        </nav>
+
+        <div class="noidung">
+            <h1><span data-icon="login"></span> Đăng nhập</h1>
+
+            <form id="form-dangnhap" class="form-tk" onsubmit="return guiDangNhap()" novalidate>
+                <label for="email">Tài khoản Email</label>
+                <input type="text" id="email" autocomplete="username">
+
+                <label for="matkhau">Mật khẩu</label>
+                <input type="password" id="matkhau" autocomplete="current-password">
+
+                <button type="submit">Đăng nhập</button>
+            </form>
+
+            <p id="thongbao" class="thongbao" role="status"></p>
+            <p id="chua-co-tk">Chưa có tài khoản? <a href="dangky.html">Đăng ký</a></p>
+        </div>
+
+        <footer class="ft-sinhvien">
+            <div class="ft-noidung">
+                <div class="ft-trai">
+                    <p class="ft-tieude">BÀI TẬP BÁO CÁO CỦA NHÓM</p>
+                    <p>Môn học: Lập trình Web cơ bản</p>
+                    <p>Thành viên thực hiện: <b>Duy & Khánh</b></p>
+                </div>
+                <div class="ft-phai">
+                    <p class="ft-tieude">THÔNG TIN LIÊN HỆ</p>
+                    <p>Cửa hàng Công nghệ KD</p>
+                    <p><span data-icon="phone"></span> SĐT: 0604 623 012</p>
+                    <p><span data-icon="mail"></span> Email: nhomduykhanh@gmail.com</p>
+                </div>
+            </div>
+            <div class="ft-banquyen"><p>© 2026 Nhóm Duy & Khánh.</p></div>
+        </footer>
+
+    </div>
+    <script src="icons.js"></script>
+    <script src="taikhoan.js"></script>
+    <script>
+        /* Đã đăng nhập rồi thì không hiện form nữa */
+        if (laAdmin()) {
+            window.location = "admin.html";   /* admin đã đăng nhập thì vào thẳng trang quản trị */
+        }
+        var dangCo = nguoiDangNhap();
+        if (dangCo) {
+            document.getElementById("form-dangnhap").style.display = "none";
+            document.getElementById("chua-co-tk").style.display = "none";
+            hienThongBao("Bạn đang đăng nhập với tài khoản " + dangCo.email + ".", "ok");
+        }
+
+        function guiDangNhap() {
+            var loi = dangNhap(
+                document.getElementById("email").value,
+                document.getElementById("matkhau").value
+            );
+
+            if (loi !== "") {
+                hienThongBao(loi, "loi");
+                return false;
+            }
+
+            /* Admin đăng nhập xong thì chuyển ngay sang trang quản trị */
+            if (laAdmin()) {
+                window.location = "admin.html";
+                return false;
+            }
+
+            var tiep = new URLSearchParams(window.location.search).get("tiep");
+            window.location = (tiep === "thanhtoan.html") ? tiep : "index.html";
+            return false;
+        }
+    </script>
+</body>
+</html>
